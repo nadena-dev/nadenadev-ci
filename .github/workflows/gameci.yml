@@ -33,6 +33,9 @@ on:
       packageName:
         required: true
         type: string
+      test_assembly:
+        required: true
+        type: string
 
 # This is a bit of a radioactive event; we need to be very careful with what permissions
 # we assign this action, as we're allowing arbitrary code execution with the context of
@@ -132,7 +135,7 @@ jobs:
           unityVersion: ${{ matrix.unity_version }}
           githubToken: ${{ github.token }}
           coverageOptions: generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+nadena.dev.*
-          customParameters: -nographics -assemblyNames nadena.dev.ndmf.UnitTests
+          customParameters: -nographics -assemblyNames ${{ inputs.test_assembly }}
           checkName: ${{ steps.setup.outputs.check_name }}
           customImage: ${{ matrix.customImage }}
 
@@ -140,7 +143,6 @@ jobs:
         if: '!cancelled()'
         run: |
           ls -lR
-          ls -lR Packages/nadena*
           
       - name: List compile errors
         continue-on-error: true

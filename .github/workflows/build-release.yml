@@ -15,6 +15,9 @@ on:
       packageName:
         required: true
         type: string
+      test_assembly:
+        required: true
+        type: string
 
 jobs:
   check-reltests:
@@ -37,6 +40,7 @@ jobs:
     secrets: inherit
     with:
       packageName: ${{ github.event.inputs.packageName }}
+      test_assembly: ${{ github.event.inputs.test_assembly }}
   prechecks:
     runs-on: ubuntu-latest
     outputs:
