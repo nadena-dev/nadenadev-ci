@@ -35,6 +35,8 @@ jobs:
       checks: write
       contents: read
     secrets: inherit
+    with:
+      packageName: ${{ github.event.inputs.packageName }}
   prechecks:
     runs-on: ubuntu-latest
     outputs:
