@@ -23,7 +23,7 @@ jobs:
       need_tests: ${{ steps.check_tagged.outputs.all-checks-passed != 'true' }}
     steps:
       - name: Get check status
-        uses: actions/get-status@0.0.1
+        uses: danieldeichfuss/get-status@v0.0.10
         with:
           ref: ${{ github.sha }}
         
