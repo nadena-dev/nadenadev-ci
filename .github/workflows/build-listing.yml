@@ -3,8 +3,8 @@
 name: Trigger repo listing generator
 
 on:
-  release:
-    types: [ published, unpublished, created, edited, deleted ]
+  #release:
+  #  types: [ published, unpublished, created, edited, deleted ]
   workflow_dispatch:
 
 jobs:
