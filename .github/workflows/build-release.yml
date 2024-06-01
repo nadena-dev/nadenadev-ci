@@ -30,7 +30,7 @@ jobs:
   run-tests:
     needs: [prechecks, check-reltests]
     if: ${{ needs.prechecks.outputs.need-new-tag == 'true' && needs.check-reltests.outputs.need_tests == 'true' }}
-    uses: nadena-dev/nadenadev-ci/workflows/gameci.yml@main
+    uses: nadena-dev/nadenadev-ci/.github/workflows/gameci.yml@main
     permissions:
       checks: write
       contents: read
