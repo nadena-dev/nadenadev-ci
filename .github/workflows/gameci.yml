@@ -52,6 +52,7 @@ jobs:
         unity_version: [ 2022.3.6f1 ]
         sdk: [ vrcsdk ]
         experimental: [ false ]
+        customImage: [ '' ]
         include:
           - unity_version: 2022.3.6f1
             sdk: standalone
@@ -59,6 +60,7 @@ jobs:
           - unity_version: 2022.3.22f1
             sdk: vrcsdk
             experimental: true
+            customImage: ubuntu-2022.3.22f1-linux-il2cpp-3.1
     runs-on: ubuntu-latest
     permissions:
       checks: write
@@ -132,6 +134,7 @@ jobs:
           coverageOptions: generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+nadena.dev.*
           customParameters: -nographics -assemblyNames nadena.dev.ndmf.UnitTests
           checkName: ${{ steps.setup.outputs.check_name }}
+          customImage: ${{ matrix.customImage }}
 
       - name: "Debug: List project contents"
         if: '!cancelled()'
